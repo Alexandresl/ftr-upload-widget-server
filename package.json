@@ -1,5 +1,5 @@
 {
-  "name": "projeto",
+  "name": "teste-comandos",
   "version": "1.0.0",
   "type": "module",
   "description": "",
@@ -16,16 +16,6 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.10",
-    "@types/node": "^25.5.2",
-    "dotenv-cli": "^11.0.0",
-    "drizzle-kit": "^0.31.10",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.2",
-    "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.4"
-  },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
     "@fastify/multipart": "^10.0.0",
@@ -37,5 +27,14 @@
     "postgres": "^3.4.9",
     "uuidv7": "^1.2.1",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
+    "@types/node": "^25.6.0",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.4"
   }
 }
