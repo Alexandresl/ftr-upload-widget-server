@@ -1,5 +1,5 @@
 {
-  "id": "d53f1cd0-e2e8-40e2-8379-4be350c4fcf6",
+  "id": "2f7dc46c-684c-4fc9-b26e-9d28ddded36a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -20,8 +20,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "romote_key": {
-          "name": "romote_key",
+        "remote_key": {
+          "name": "remote_key",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -44,11 +44,11 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "uploads_romote_key_unique": {
-          "name": "uploads_romote_key_unique",
+        "uploads_remote_key_unique": {
+          "name": "uploads_remote_key_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "romote_key"
+            "remote_key"
           ]
         }
       },
