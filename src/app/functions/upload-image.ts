@@ -1,41 +1,42 @@
-import { Readable } from "node:stream";
-import z from "zod";
-import { db } from "@/infra/db";
-import { schema } from "@/infra/db/schemas";
-import { uploadFileToStorage } from "@/infra/storage/upload-file-to-storage";
-import { type Either, makeLeft, makeRight } from "@/shared/either";
-import { InvalidFileFormat } from "./errors/invalid-file-format";
+import { Readable } from 'node:stream'
+import { db } from '@/infra/db'
+import { schema } from '@/infra/db/schemas'
+import { type Either, makeLeft, makeRight } from '@/infra/shared/either'
+import { uploadFileToStorage } from '@/infra/storage/upload-file-to-storage'
+import { z } from 'zod'
+import { InvalidFileFormat } from './errors/invalid-file-format'
 
 const uploadImageInput = z.object({
-    fileName: z.string(),
-    contentType: z.string(),
-    contentStream: z.instanceof(Readable),
+  fileName: z.string(),
+  contentType: z.string(),
+  contentStream: z.instanceof(Readable),
 })
 
-type UploadImageInput = z.input<typeof uploadImageInput>;
+type UploadImageInput = z.input<typeof uploadImageInput>
 
-const allwedMimetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp']
+const allowedMimeTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp']
 
-export async function uploadImage(input: UploadImageInput): Promise<Either<InvalidFileFormat, { url: string }>> {
-    const { fileName, contentType, contentStream } = uploadImageInput.parse(input)
+export async function uploadImage(
+  input: UploadImageInput
+): Promise<Either<InvalidFileFormat, { url: string }>> {
+  const { contentStream, contentType, fileName } = uploadImageInput.parse(input)
 
-    if (!allwedMimetypes.includes(contentType)) {
-        return makeLeft(new InvalidFileFormat())
-    }
+  if (!allowedMimeTypes.includes(contentType)) {
+    return makeLeft(new InvalidFileFormat())
+  }
 
-    // TODO: carregar a imagem para o Cloudflare R2
-    const { key, url } = await uploadFileToStorage({
-        folder: 'images',
-        fileName,
-        contentType,
-        contentStream
-    })
+  const { key, url } = await uploadFileToStorage({
+    folder: 'images',
+    fileName,
+    contentType,
+    contentStream,
+  })
 
-    await db.insert(schema.uploads).values({
-        name: fileName,
-        remoteKey: key,
-        remoteUrl: url,
-    })
+  await db.insert(schema.uploads).values({
+    name: fileName,
+    remoteKey: key,
+    remoteUrl: url,
+  })
 
-    return makeRight({ url })
+  return makeRight({ url })
 }

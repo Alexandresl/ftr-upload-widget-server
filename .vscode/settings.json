@@ -1,9 +1,8 @@
 {
   "editor.formatOnSave": true,
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "js/ts.format.insertSpaceBeforeFunctionParenthesis": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   }
