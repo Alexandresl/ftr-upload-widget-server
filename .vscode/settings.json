@@ -3,6 +3,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "js/ts.format.insertSpaceBeforeFunctionParenthesis": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   }
