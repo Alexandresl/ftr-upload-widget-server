@@ -43,4 +43,10 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Setup test database
+        run: |
+          PGPASSWORD=docker psql -h localhost -U docker -d postgres -c "DROP DATABASE IF EXISTS upload_test;"
+          PGPASSWORD=docker psql -h localhost -U docker -d postgres -c "CREATE DATABASE upload_test;"
+
       - run: pnpm run test
