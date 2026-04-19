@@ -9,7 +9,7 @@ console.log("Environment variables loaded successfully");
 try {
   // Run drizzle-kit migrate
   console.log("Running drizzle-kit migrate...");
-  execSync("drizzle-kit migrate", { stdio: "inherit" });
+  execSync("npx drizzle-kit migrate", { stdio: "inherit" });
   console.log("Migration completed successfully");
 } catch (error) {
   console.error("Migration failed:", error.message);
