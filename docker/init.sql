@@ -1,0 +1,1 @@
+CRATE DATABASE upload_test;

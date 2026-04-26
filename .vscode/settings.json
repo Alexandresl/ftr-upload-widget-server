@@ -1,9 +1,14 @@
 {
-    "editor.formatOnSave": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "biomejs.biome"
-    },
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
-    }
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.rulers": [80],
+  // Opcional: Definir a cor da régua
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#3335" // Define a cor da régua como rosa
+  }
 }
